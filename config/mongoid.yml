@@ -1,3 +1,8 @@
+production:
+    clients:
+        default:
+            uri: mongodb://heroku_1ht594c0:@ds159371.mlab.com:59371
+
 development:
   # Configure available database clients. (required)
   clients:
