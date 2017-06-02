@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   	resources :prices, only: [:index, :create]
   end
   resources :prices, only: [:show, :edit, :update, :destroy]
+  post 'prices/:id/confirm' => 'prices#confirm'
+  post 'prices/:id/disconfirm' => 'prices#disconfirm'
   resources :users
 end
