@@ -12,14 +12,14 @@ class Price
   def confirm!(user)
     if self.user != user 
     	if !self.confirmations.include?(user)
-    		if !self.disconfirmations.include?(user)
-      			self.confirmations << user
-      			Nil
-      		else
-      			"you can't confirm and disconfirm a price"
+    		if self.disconfirmations.include?(user)
+      			self.disconfirmations.delete user
       		end
+      		self.confirmations << user
+      		nil
       	else
-      		"you can't confirm a price twice"
+      		self.confirmations.delete user 
+      		nil
       	end
     else
     	"you can't confrime your own price"
@@ -30,14 +30,14 @@ class Price
   def disconfirm!(user)
     if self.user != user 
     	if !self.disconfirmations.include?(user)
-    		if !self.confirmations.include?(user)
-      			self.disconfirmations << user
-      			Nil
-      		else
-      			"you can't confirm and disconfirm a price"
+    		if self.confirmations.include?(user)
+      			self.confirmations.delete user
       		end
+      		self.disconfirmations << user
+      		nil
       	else
-      		"you can't disconfirm a price twice"
+      		self.disconfirmations.delete user 
+      		nil
       	end
     else
     	"you can't disconfrime your own price"
