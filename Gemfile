@@ -39,3 +39,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'mongoid', '~> 6.1'
 gem 'knock', '~> 2.1', '>= 2.1.1'
+gem 'carrierwave', '~> 1.1'
+gem 'mongoid-grid_fs', '~> 2.3'
+gem 'mini_magick', '~> 4.7'
+gem 'carrierwave-mongoid', '~> 0.8.1'
