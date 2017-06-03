@@ -8,5 +8,5 @@ class User
   has_many :prices
   validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: [ :create, :update ] }
   validates :username, presence: true
-  has_secure_password
+  has_secure_password  #authenticate method
 end
