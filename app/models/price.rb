@@ -3,7 +3,7 @@ class Price
   include Mongoid::Timestamps
   field :location, type: String
   field :price, type:Integer
-  mount_uploader :image, Uploader
+  #mount_uploader :image, Uploader
   has_and_belongs_to_many :confirmations , class_name: "User"
   has_and_belongs_to_many :disconfirmations , class_name: "User"
   belongs_to :user, dependent: :delete, validate: false
