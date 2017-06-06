@@ -38,6 +38,10 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'mongoid', '~> 6.1'
+gem 'devise', '~> 4.2'
+gem 'devise_token_auth', '~> 0.1.42'
+gem 'omniauth', '~> 1.6', '>= 1.6.1'
+gem 'carrierwave-mongoid', '~> 0.10.0'
 gem 'mongoid_search'
 gem 'knock', '~> 2.1', '>= 2.1.1'
 gem 'carrierwave', '~> 1.0'
