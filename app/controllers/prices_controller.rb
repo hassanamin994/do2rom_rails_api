@@ -12,16 +12,19 @@ class PricesController < ApplicationController
   def show
     #conf_names= @price.confirmations.map{|obj| { _id: obj._id, username: obj.username}}
     #disconf_names= @price.disconfirmations.map{|obj| { _id: obj._id, username: obj.username}}
-    @price.preload
+    if @price
     render json: {price: @price}
+    else
+      render json: @price, status:  :not_found
+    end
   end
 
   # POST /prices
   def create
     @price = Price.new(price_params)
     @price.product=@product
-    @price.user=current_user
-    if @price.save
+    @price.user=current_user 
+    if  @price.save
       @product.prices.push(@price)
       render json: @price, status: :created, location: @price
     else

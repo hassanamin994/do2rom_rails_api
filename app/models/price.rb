@@ -6,10 +6,12 @@ class Price
   field :sale_percentage, type: String
   field :sale_expiration, type: Integer
   field :price, type:Integer
+  mount_uploader :image, AvtarUploader
   has_and_belongs_to_many :confirmations , class_name: "User"
   has_and_belongs_to_many :disconfirmations , class_name: "User"
   belongs_to :user, dependent: :delete, validate: false
   belongs_to :product, dependent: :delete, validate: false
+  validates :price,  numericality: {greater_than: 0}
 
   def confirm!(user)
     if self.user != user

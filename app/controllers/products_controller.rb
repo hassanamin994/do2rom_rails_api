@@ -9,7 +9,11 @@ class ProductsController < ApplicationController
 
   # GET /products/1
   def show
-    render json: @product
+    if @product
+      render json: @product ,:serializer => Products::ShowSerializer
+    else
+      render json: @product, status:  :not_found
+    end
   end
 
   # POST /products
