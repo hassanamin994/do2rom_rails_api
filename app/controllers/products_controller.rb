@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :update, :destroy]
-
   # GET /products
   def index
     @products = Product.all
@@ -15,7 +14,7 @@ class ProductsController < ApplicationController
 
   # POST /products
   def create
-    @product = Product.new(product_params.as_json)
+    @product = Product.new(product_params)
 
     if @product.save
       render json: @product, status: :created, location: @product
@@ -36,6 +35,28 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   def destroy
     @product.destroy
+  end
+
+  def search
+    if (params.has_key?(:seraching_word))
+      @products = Product.where({name: /#{params[:seraching_word]}/i})
+      if !@products.empty?
+        @prices = []
+        @products.each do  |p|
+          @prices.push(Price.where({product_id: p._id}))
+        end
+        render json: {status:true,productsInfo:@products,productsprices:@prices}
+      else
+        @products = Product.any_of({name: /#{params[:seraching_word]}/i})
+        #@prices = []
+        #@products.each do  |p|
+        #  @prices.push(Price.where({product_id: p._id}))
+        #end
+        render json: {status:true,productsInfo:@products}
+      end
+    else
+      render json: {status:false,errors:"No searching words"}
+    end
   end
 
   private

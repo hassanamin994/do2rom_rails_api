@@ -1,5 +1,5 @@
 class PricesController < ApplicationController
-  before_action :set_price, only: [:show, :update, :destroy]
+  before_action :set_price, only: [:show, :update, :destroy, :confirm, :disconfirm]
   before_action :set_product, only: [:index,:create]
   # GET /prices
   def index
@@ -10,13 +10,17 @@ class PricesController < ApplicationController
 
   # GET /prices/1
   def show
-    render json: @price
+    #conf_names= @price.confirmations.map{|obj| { _id: obj._id, username: obj.username}}
+    #disconf_names= @price.disconfirmations.map{|obj| { _id: obj._id, username: obj.username}}
+    @price.preload
+    render json: {price: @price}
   end
 
   # POST /prices
   def create
     @price = Price.new(price_params)
     @price.product=@product
+    @price.user=current_user
     if @price.save
       @product.prices.push(@price)
       render json: @price, status: :created, location: @price
@@ -39,6 +43,27 @@ class PricesController < ApplicationController
     @price.destroy
   end
 
+  #confirm price
+
+  def confirm
+    msg = @price.confirm!(current_user)
+    if msg
+      render json: {error: msg}, status: :ok
+    else
+      render json: {message: "success"}, status: :created
+    end
+  end
+
+  def disconfirm
+    msg = @price.disconfirm!(current_user)
+
+    if msg
+      render json: {error: msg}, status: :ok
+    else
+      render json: {message: "success"}, status: :created
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_price
@@ -51,6 +76,6 @@ class PricesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def price_params
-      params.require(:price).permit(:location,:image,:price)
+      params.require(:price).permit(:location,:image,:price )
     end
 end
