@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:show, :edit, :update, :destroy]
   get '/products/search/:seraching_word', to: 'products#search'
   get '/products/searchqr/:seraching_qr', to: 'products#searchqr'
+  delete '/users/Blockingusers', to: 'products#Blockedusers'
   post 'prices/:id/confirm' => 'prices#confirm'
   post 'prices/:id/disconfirm' => 'prices#disconfirm'
   resources :users  #knock added routes

@@ -66,6 +66,14 @@ class ProductsController < ApplicationController
     end
   end
 
+  def Blockedusers
+    if User.where({'fakes' => {'$gt' => 30}}).delete
+      render json: {} , status: :ok
+    else
+      render json: {} , status: :not_modified
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
