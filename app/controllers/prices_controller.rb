@@ -10,10 +10,10 @@ class PricesController < ApplicationController
 
   # GET /prices/1
   def show
-    conf_names= @price.confirmations.map{|obj| { _id: obj._id, username: obj.username}}
-    disconf_names= @price.disconfirmations.map{|obj| { _id: obj._id, username: obj.username}}
-    
-    render json: {price: @price ,confirm:conf_names, disconfirm: disconf_names}
+    #conf_names= @price.confirmations.map{|obj| { _id: obj._id, username: obj.username}}
+    #disconf_names= @price.disconfirmations.map{|obj| { _id: obj._id, username: obj.username}}
+    @price.preload
+    render json: {price: @price}
   end
 
   # POST /prices

@@ -2,7 +2,11 @@ class Price
   include Mongoid::Document
   include Mongoid::Timestamps
   field :location, type: String
+  field :sale, type: String
+  field :sale_percentage, type: String
+  field :sale_expiration, type: Integer
   field :price, type:Integer
+  field :barcode ,type: String
   #mount_uploader :image, Uploader
   has_and_belongs_to_many :confirmations , class_name: "User"
   has_and_belongs_to_many :disconfirmations , class_name: "User"
