@@ -12,7 +12,6 @@ class PricesController < ApplicationController
   def show
     #conf_names= @price.confirmations.map{|obj| { _id: obj._id, username: obj.username}}
     #disconf_names= @price.disconfirmations.map{|obj| { _id: obj._id, username: obj.username}}
-    #@price.preload
     if @price
     render json: {price: @price}
     else
