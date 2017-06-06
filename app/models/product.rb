@@ -4,6 +4,7 @@ class Product
   field :name, type: String
   field :qr_code, type: String
   has_many :prices
+  has_many :comments
   search_in :name
   validates :name, uniqueness: true
 end

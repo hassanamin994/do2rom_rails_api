@@ -1,7 +1,6 @@
 class Comment
   include Mongoid::Document
-  include ActiveModel::SecurePassword
-  include ActiveModel::Validations
+  include Mongoid::Timestamps
   belongs_to :user, dependent: :delete, validate: false
   field :body , type: String
 
