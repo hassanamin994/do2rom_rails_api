@@ -48,28 +48,6 @@ GEM
     bson (4.2.1)
     builder (3.2.3)
     byebug (9.0.6)
-<<<<<<< HEAD
-    carrierwave (0.11.2)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
-      json (>= 1.7)
-      mime-types (>= 1.16)
-      mimemagic (>= 0.3.0)
-    carrierwave-mongoid (0.10.0)
-      carrierwave (>= 0.8.0, < 0.12.0)
-      mongoid (>= 3.0, < 7.0)
-      mongoid-grid_fs (>= 1.3, < 3.0)
-    concurrent-ruby (1.0.5)
-    devise (4.2.1)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0, < 5.1)
-      responders
-      warden (~> 1.2.3)
-    devise_token_auth (0.1.42)
-      devise (> 3.5.2, <= 4.3)
-      rails (< 6)
-=======
     carrierwave (1.1.0)
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
@@ -80,17 +58,12 @@ GEM
     case_transform (0.2)
       activesupport
     concurrent-ruby (1.0.5)
->>>>>>> 0276d2c55a1c9f0fa95fbfd2a6fdb6cc7612b753
     erubis (2.7.0)
     fast-stemmer (1.0.2)
     ffi (1.9.18)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
-<<<<<<< HEAD
     hashie (3.5.5)
-    i18n (0.8.1)
-    json (2.1.0)
-=======
     i18n (0.8.4)
     jsonapi-renderer (0.1.2)
     jwt (1.5.6)
@@ -98,7 +71,6 @@ GEM
       bcrypt (~> 3.1)
       jwt (~> 1.5)
       rails (>= 4.2)
->>>>>>> 0276d2c55a1c9f0fa95fbfd2a6fdb6cc7612b753
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -110,39 +82,24 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-<<<<<<< HEAD
-    mimemagic (0.3.2)
-=======
     mini_magick (4.7.0)
->>>>>>> 0276d2c55a1c9f0fa95fbfd2a6fdb6cc7612b753
-    mini_portile2 (2.1.0)
+    mini_portile2 (2.2.0)
     minitest (5.10.2)
     mongo (2.4.2)
       bson (>= 4.2.1, < 5.0.0)
     mongoid (6.1.0)
       activemodel (~> 5.0)
       mongo (>= 2.4.1, < 3.0.0)
-<<<<<<< HEAD
-    mongoid-grid_fs (2.3.0)
-      mime-types (>= 1.0, < 4.0)
-      mongoid (>= 3.0, < 7.0)
-    nio4r (2.1.0)
-    nokogiri (1.7.2)
-      mini_portile2 (~> 2.1.0)
-    omniauth (1.6.1)
-      hashie (>= 3.4.6, < 3.6.0)
-      rack (>= 1.6.2, < 3)
-    orm_adapter (0.5.0)
-    puma (3.8.2)
-=======
     mongoid_search (0.3.2)
       fast-stemmer (~> 1.0.0)
       mongoid (>= 3.0.0)
     nio4r (2.1.0)
-    nokogiri (1.7.2)
-      mini_portile2 (~> 2.1.0)
-    puma (3.9.0)
->>>>>>> 0276d2c55a1c9f0fa95fbfd2a6fdb6cc7612b753
+    nokogiri (1.8.0)
+      mini_portile2 (~> 2.2.0)
+    omniauth (1.6.1)
+      hashie (>= 3.4.6, < 3.6.0)
+      rack (>= 1.6.2, < 3)
+    puma (3.9.1)
     rack (2.0.3)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -200,23 +157,14 @@ DEPENDENCIES
   active_model_serializers (~> 0.10.2)
   bcrypt (~> 3.1.7)
   byebug
-<<<<<<< HEAD
-  carrierwave-mongoid (~> 0.10.0)
-  devise (~> 4.2)
-  devise_token_auth (~> 0.1.42)
-=======
   carrierwave (~> 1.0)
   carrierwave-mongoid
   knock (~> 2.1, >= 2.1.1)
->>>>>>> 0276d2c55a1c9f0fa95fbfd2a6fdb6cc7612b753
   listen (~> 3.0.5)
   mini_magick
   mongoid (~> 6.1)
-<<<<<<< HEAD
-  omniauth (~> 1.6, >= 1.6.1)
-=======
   mongoid_search
->>>>>>> 0276d2c55a1c9f0fa95fbfd2a6fdb6cc7612b753
+  omniauth (~> 1.6, >= 1.6.1)
   puma (~> 3.0)
   rails (~> 5.0.3)
   spring
