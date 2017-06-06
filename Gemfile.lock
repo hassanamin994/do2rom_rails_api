@@ -55,16 +55,6 @@ GEM
     carrierwave-mongoid (0.1.0)
       carrierwave
       mongoid
-    concurrent-ruby (1.0.5)
-    devise (4.3.0)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0, < 5.2)
-      responders
-      warden (~> 1.2.3)
-    devise_token_auth (0.1.42)
-      devise (> 3.5.2, <= 4.3)
-      rails (< 6)
     case_transform (0.2)
       activesupport
     concurrent-ruby (1.0.5)
@@ -109,7 +99,6 @@ GEM
     omniauth (1.6.1)
       hashie (>= 3.4.6, < 3.6.0)
       rack (>= 1.6.2, < 3)
-    orm_adapter (0.5.0)
     puma (3.9.1)
     rack (2.0.3)
     rack-test (0.6.3)
@@ -141,9 +130,6 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
-    responders (2.4.0)
-      actionpack (>= 4.2.0, < 5.3)
-      railties (>= 4.2.0, < 5.3)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -160,8 +146,6 @@ GEM
     thread_safe (0.3.6)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
-    warden (1.2.7)
-      rack (>= 1.0)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -175,8 +159,6 @@ DEPENDENCIES
   byebug
   carrierwave (~> 1.0)
   carrierwave-mongoid
-  devise (~> 4.2)
-  devise_token_auth (~> 0.1.42)
   knock (~> 2.1, >= 2.1.1)
   listen (~> 3.0.5)
   mini_magick
