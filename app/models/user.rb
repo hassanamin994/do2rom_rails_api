@@ -6,9 +6,9 @@ class User
   field :username, type: String
   field :password_digest, type: String
   field :points , type: Integer
-  #mount_uploader :avtar, Uploader
   field :fakes , type: Integer
   field :flage , type: Integer
+  mount_uploader :avtar, AvtarUploader
   has_many :prices
   validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: [ :create, :update ] }
   validates :username, presence: true

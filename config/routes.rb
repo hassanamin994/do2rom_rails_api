@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   resources :prices, only: [:show, :edit, :update, :destroy]
   post 'prices/:id/confirm' => 'prices#confirm'
   post 'prices/:id/disconfirm' => 'prices#disconfirm'
-  resources :users  #knock added routes 
+  get '/products/search/:seraching_word', to: 'products#search'
+  resources :users  #knock added routes
 end
