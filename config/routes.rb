@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
   get '/products/search/:seraching_word', to: 'products#search'
   get '/products/searchqr/:seraching_qr', to: 'products#searchqr'
+  delete '/users/Blockingusers', to: 'products#Blockedusers'
   resources :prices, only: [:show, :edit, :update, :destroy]
   post 'prices/:id/confirm' => 'prices#confirm'
   post 'prices/:id/disconfirm' => 'prices#disconfirm'
