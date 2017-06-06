@@ -5,5 +5,10 @@ Rails.application.routes.draw do
   resources :products do
   	resources :prices, only: [:index, :create]
   end
+  get '/products/search/:seraching_word', to: 'products#search'
+  get '/products/searchqr/:seraching_qr', to: 'products#searchqr'
   resources :prices, only: [:show, :edit, :update, :destroy]
+  post 'prices/:id/confirm' => 'prices#confirm'
+  post 'prices/:id/disconfirm' => 'prices#disconfirm'
+  resources :users  #knock added routes
 end

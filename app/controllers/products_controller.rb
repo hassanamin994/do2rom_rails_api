@@ -39,7 +39,7 @@ class ProductsController < ApplicationController
 
   def search
     if (params.has_key?(:seraching_word))
-      @products = Product.where({name: /#{params[:seraching_word]}/i})
+      @products = Product.where({qr_code: /#{params[:seraching_word]}/i},{name: /#{params[:seraching_word]}/i})
       if !@products.empty?
         @prices = []
         @products.each do  |p|
@@ -56,6 +56,17 @@ class ProductsController < ApplicationController
       end
     else
       render json: {status:false,errors:"No searching words"}
+    end
+  end
+
+  def searchqr
+    if (params.has_key?(:seraching_word))
+        @product = Product.where({qr_code: /#{params[:seraching_qr]}/})
+        if !@product.empty?
+          render json: {status:true,productsInfo:@product}
+        else
+          render json: {status:false,errors:"No product"}
+        end
     end
   end
 
