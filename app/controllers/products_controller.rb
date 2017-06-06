@@ -43,12 +43,12 @@ class ProductsController < ApplicationController
 
   def search
     if (params.has_key?(:seraching_word))
-      @products = Product.where({name: /#{params[:seraching_word]}/i})
-      if !@products.empty?
+      @products = Product.find_by({name: params[:seraching_word]})
+      if @products
         render json: @products , status: :ok , :serializer => Products::SearchSerializer
       else
-        @products = Product.any_of({name: /#{params[:seraching_word]}/i})
-        render json: @products , status: :ok , :serializer => Products::SearchSerializer
+        @products = Product.where({name: /#{params[:seraching_word]}/i})
+        render json: @products , status: :ok , :each_serializer => Products::SearchSerializer
       end
     else
       render json: {} , status: :not_found
