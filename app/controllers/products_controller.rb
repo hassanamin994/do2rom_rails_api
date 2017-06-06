@@ -43,23 +43,15 @@ class ProductsController < ApplicationController
 
   def search
     if (params.has_key?(:seraching_word))
-      @products = Product.where({qr_code: /#{params[:seraching_word]}/i},{name: /#{params[:seraching_word]}/i})
+      @products = Product.where({name: /#{params[:seraching_word]}/i})
       if !@products.empty?
-        @prices = []
-        @products.each do  |p|
-          @prices.push(Price.where({product_id: p._id}))
-        end
-        render json: {status:true,productsInfo:@products,productsprices:@prices}
+        render json: @products , status: :ok , :serializer => Products::SearchSerializer
       else
         @products = Product.any_of({name: /#{params[:seraching_word]}/i})
-        #@prices = []
-        #@products.each do  |p|
-        #  @prices.push(Price.where({product_id: p._id}))
-        #end
-        render json: {status:true,productsInfo:@products}
+        render json: @products , status: :ok , :serializer => Products::SearchSerializer
       end
     else
-      render json: {status:false,errors:"No searching words"}
+      render json: {} , status: :not_found
     end
   end
 
@@ -67,9 +59,9 @@ class ProductsController < ApplicationController
     if (params.has_key?(:seraching_word))
         @product = Product.where({qr_code: /#{params[:seraching_qr]}/})
         if !@product.empty?
-          render json: {status:true,productsInfo:@product}
+          render json: @product , status: :ok , :serializer => Products::SearchSerializer
         else
-          render json: {status:false,errors:"No product"}
+          render json: {} , status: :not_found
         end
     end
   end
