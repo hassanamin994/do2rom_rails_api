@@ -74,6 +74,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  def DropFakePrices
+    Price.where({})
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product

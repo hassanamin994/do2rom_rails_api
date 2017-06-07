@@ -31,5 +31,6 @@ module Do2romRailsApi
 		'Access-Control-Allow-Origin' => '*',
 		'Access-Control-Request-Method' => %w{GET POST PUT PATCH DELETE OPTIONS}.join(",")
 	}
+  config.active_job.queue_adapter = :sidekiq
   end
 end
