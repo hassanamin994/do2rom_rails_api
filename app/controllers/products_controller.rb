@@ -57,9 +57,9 @@ class ProductsController < ApiController
   end
 
   def searchqr
-    if (params.has_key?(:seraching_word))
-        @product = Product.where({qr_code: /#{params[:seraching_qr]}/})
-        if !@product.empty?
+    if (params.has_key?(:seraching_qr))
+        @product = Product.find_by({qr_code: params[:seraching_qr]})
+        if @product
           render json: @product , status: :ok , :serializer => Products::SearchSerializer
         else
           render json: {} , status: :not_found
@@ -73,6 +73,10 @@ class ProductsController < ApiController
     else
       render json: {} , status: :not_modified
     end
+  end
+
+  def DropFakePrices
+    Price.where({})
   end
 
   private

@@ -7,4 +7,5 @@ class Product
   has_many :comments
   search_in :name
   validates :name, uniqueness: true
+  validates :qr_code, uniqueness: true
 end
