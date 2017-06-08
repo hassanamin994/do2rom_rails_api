@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
 	require 'carrierwave'
 	include Knock::Authenticable
-	before_action :authenticate_user
+	before_action :authenticate_user :except => ["api"]
 	
 end
