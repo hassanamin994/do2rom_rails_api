@@ -5,4 +5,4 @@ class CleanUpJob < ApplicationJob
     User.where({'fakes' => {'$gt' => 30}}).delete
   end
 end
-CleanUpJob.set(wait: 1.hour).perform_later()
+#CleanUpJob.set(wait: 1.hour).perform_later()
