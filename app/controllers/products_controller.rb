@@ -1,5 +1,6 @@
-class ProductsController < ApplicationController
+class ProductsController < ApiController
   before_action :set_product, only: [:show, :update, :destroy]
+
   # GET /products
   def index
     @products = Product.all

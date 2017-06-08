@@ -1,11 +1,15 @@
 
 Rails.application.routes.draw do
+
+
+  scope "/api" do
   post 'user_token' => 'user_token#create'
-  root to: 'product#index'
+    
+    root to: 'product#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :products do
-  	resources :prices, only: [:index, :create]
-  	resources :comments, only: [:index, :create]
+    resources :prices, only: [:index, :create]
+    resources :comments, only: [:index, :create]
   end
   resources :prices, only: [:show, :edit, :update, :destroy]
   resources :comments, only: [:show, :edit, :update, :destroy]
@@ -15,4 +19,8 @@ Rails.application.routes.draw do
   post 'prices/:id/confirm' => 'prices#confirm'
   post 'prices/:id/disconfirm' => 'prices#disconfirm'
   resources :users  #knock added routes
+    match '*path', :controller => 'api', :action => 'handle_options_request', :via => [:get, :post, :options]
+  end
+
+  
 end
