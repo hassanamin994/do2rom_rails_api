@@ -88,7 +88,6 @@ class ProductsController < ApiController
 
     # Only allow a trusted parameter "white list" through.
     def product_params
-      params.require(:product).permit(:name)
-      #params.fetch(:product, {})
+      params.require(:product).permit(:name,:qr_code)
     end
 end
