@@ -6,7 +6,7 @@ class ProductsController < ApiController
   def index
     @products = Product.all
 
-    render json: @products
+    render json: @products, :each_serializer => Products::SearchSerializer
   end
 
   # GET /products/1
@@ -23,7 +23,7 @@ class ProductsController < ApiController
     @product = Product.new(product_params)
 
     if @product.save
-      render json: @product, status: :created, location: @product
+      render json: @product, status: :created, location: @product ,:serializer => Products::ShowSerializer
     else
       render json: @product.errors, status: :unprocessable_entity
     end

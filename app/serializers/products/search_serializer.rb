@@ -1,9 +1,9 @@
 class Products::SearchSerializer < ProductSerializer
-	attributes :id, :name, :details
+	attributes :id, :name, :qr_code, :details
 	def details
 		if object.prices.exists?
 			prices = object.prices.order_by(:price => 'desc')
-			{ max: prices.first, min: prices.last.price, min_pic: prices.last.image}
+			{ max: prices.first.price, min: prices.last.price, min_pic: prices.last.image, min_uername: prices.last.user.username, min_userid: prices.last.user.id}
 		else
 			nil
 		end
