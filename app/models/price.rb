@@ -6,7 +6,7 @@ class Price
   field :sale_percentage, type: String
   field :sale_expiration, type: Integer
   field :price, type:Integer
-  mount_uploader :image, AvtarUploader
+  mount_base64_uploader :image, AvatarUploader, file_name: -> (p) { p.id }
   has_and_belongs_to_many :confirmations , class_name: "User"
   has_and_belongs_to_many :disconfirmations , class_name: "User"
   belongs_to :user, dependent: :delete, validate: false

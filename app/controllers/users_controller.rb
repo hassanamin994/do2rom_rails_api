@@ -1,6 +1,6 @@
   class UsersController < ApiController
   before_action :authenticate_user, except: [:create]
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:show, :update, :destroy, :avatar]
 
   # GET /users
   def index
@@ -51,6 +51,7 @@
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:username , :email ,:password,:password_confirmation)
+      params.require(:user).permit(:username , :email ,:password,:password_confirmation, :avatar)
+      
     end
 end
