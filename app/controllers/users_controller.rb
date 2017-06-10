@@ -14,6 +14,10 @@
     render json: @user
   end
 
+  def my_info
+    render json: current_user
+  end
+
   # POST /users
   def create
     if User.find_by(email: user_params["email"])

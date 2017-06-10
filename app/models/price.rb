@@ -1,6 +1,7 @@
 class Price
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Rails.application.routes.url_helpers
   field :location, type: String
   field :sale, type: String
   field :sale_percentage, type: String
