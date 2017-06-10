@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     post 'prices/:id/confirm' => 'prices#confirm'
     post 'prices/:id/disconfirm' => 'prices#disconfirm'
     resources :users 
-    get '/my_info' => 'users#my_inf'
+    get '/my_info' => 'users#my_info'
     root to: 'product#index'
     match '*path', :controller => 'api', :action => 'handle_options_request', :via => [:get, :post, :options]
   end
