@@ -10,7 +10,7 @@ class Products::SearchSerializer < ProductSerializer
 			   min_pic: prices.last.image,
 			    min_id: prices.last.id.to_s, 
 				min_username: prices.last.user.username, 
-				min_userid: prices.last.user.id, 
+				min_userid: prices.last.user.id.to_s, 
 				min_location: prices.last.location, 
 				min_sale: prices.last.sale, 
 				min_sale_percentage: prices.last.sale_percentage, 
