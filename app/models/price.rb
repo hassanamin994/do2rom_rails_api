@@ -27,7 +27,7 @@ class Price
       		"price confirmation removed"
       	end
     else
-    	"you can't confrime your own price"
+    	nil
     end
 
   end
@@ -45,7 +45,7 @@ class Price
       		"price disconfirmation removed"
       	end
     else
-    	"you can't disconfrime your own price"
+      nil
     end
   end
 end
