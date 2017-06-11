@@ -5,12 +5,12 @@ class Products::SearchSerializer < ProductSerializer
 		if object.prices.exists?
 			prices = object.prices.order_by(:price => 'desc')
 			{ max: prices.first.price,
-			 max_id: prices.first.id.to_s,
+			 max_id: prices.first._id,
 			  min: prices.last.price,
 			   min_pic: prices.last.image,
-			    min_id: prices.last.id.to_s, 
+			    min_id: prices.last._id, 
 				min_username: prices.last.user.username, 
-				min_userid: prices.last.user.id.to_s, 
+				min_userid: prices.last.user._id, 
 				min_location: prices.last.location, 
 				min_sale: prices.last.sale, 
 				min_sale_percentage: prices.last.sale_percentage, 
