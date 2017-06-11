@@ -21,10 +21,10 @@ class Price
       			self.disconfirmations.delete user
       		end
       		self.confirmations << user
-      		nil
+      		"price confirmed"
       	else
       		self.confirmations.delete user
-      		nil
+      		"price confirmation removed"
       	end
     else
     	"you can't confrime your own price"
@@ -39,10 +39,10 @@ class Price
       			self.confirmations.delete user
       		end
       		self.disconfirmations << user
-      		nil
+      		"price disconfirmed"
       	else
       		self.disconfirmations.delete user
-      		nil
+      		"price disconfirmation removed"
       	end
     else
     	"you can't disconfrime your own price"

@@ -51,20 +51,20 @@ class PricesController < ApiController
 
   def confirm
     msg = @price.confirm!(current_user)
-    if msg
-      render json: {error: msg}, status: :ok
+    if !msg
+      render json: {error: "you can't confrime your own price"}, status: :ok
     else
-      render json: {message: "success"}, status: :created
+      render json: {message: msg}, status: :created
     end
   end
 
   def disconfirm
     msg = @price.disconfirm!(current_user)
 
-    if msg
-      render json: {error: msg}, status: :ok
+    if !msg
+      render json: {error: "you can't confrime your own price" }, status: :ok
     else
-      render json: {message: "success"}, status: :created
+      render json: {message: msg }, status: :created
     end
   end
 
