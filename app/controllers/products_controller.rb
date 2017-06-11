@@ -68,6 +68,16 @@ class ProductsController < ApiController
     end
   end
 
+  def pagination
+    @products = Product.all
+    @products = @products[params[:start].to_i..params[:end].to_i]
+    if @products
+      render json: @products , status: :ok , :each_serializer => Products::SearchSerializer
+    else
+      render json: {status:"no Results found"}
+    end
+  end
+
   def Blockedusers
     if User.where({'fakes' => {'$gt' => 30}}).delete
       render json: {} , status: :ok
