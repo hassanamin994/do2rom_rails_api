@@ -14,7 +14,7 @@ class PricesController < ApiController
     #conf_names= @price.confirmations.map{|obj| { _id: obj._id, username: obj.username}}
     #disconf_names= @price.disconfirmations.map{|obj| { _id: obj._id, username: obj.username}}
     if @price
-    render json: {price: @price}
+    render json:  @price
     else
       render json: @price, status:  :not_found
     end
