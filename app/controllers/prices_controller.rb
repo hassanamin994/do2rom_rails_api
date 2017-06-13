@@ -80,6 +80,6 @@ class PricesController < ApiController
 
     # Only allow a trusted parameter "white list" through.
     def price_params
-      params.require(:price).permit(:location,:image,:price )
+      params.require(:price).permit(:location,:price )
     end
 end
