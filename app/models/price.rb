@@ -8,9 +8,9 @@ class Price
   field :sale_expiration, type: Integer
   field :price, type:Integer
   mount_base64_uploader :image, AvatarUploader, file_name: -> (p) { p.id }
-  has_and_belongs_to_many :confirmations , class_name: "User"
-  has_and_belongs_to_many :disconfirmations , class_name: "User"
-  belongs_to :user, dependent: :delete, validate: false
+  has_and_belongs_to_many :confirmations , class_name: "User", inverse_of: :confirms
+  has_and_belongs_to_many :disconfirmations , class_name: "User", inverse_of: :disconfirms
+  belongs_to :user, dependent: :delete, validate: false, inverse_of: :prices
   belongs_to :product, dependent: :delete, validate: false
   validates :price,  numericality: {greater_than: 0}
 
@@ -20,7 +20,7 @@ class Price
     		if self.disconfirmations.include?(user)
       			self.disconfirmations.delete user
       		end
-      		self.confirmations << user
+      		self.confirmations.push user
       		"price confirmed"
       	else
       		self.confirmations.delete user
