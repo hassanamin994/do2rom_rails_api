@@ -1,7 +1,7 @@
 class Products::ShowSerializer < ProductSerializer
 	attributes :id, :name, :qr_code, :details, :image
 	class CustomPriceSerializer < PriceSerializer
-		attributes :id, :location, :sale, :sale_percentage, :sale_expiration, :price, :image, :confirmation_ids, :disconfirmation_ids, :user, :created_at
+		attributes :id, :location, :sale, :sale_percentage, :sale_expiration, :price, :confirmation_ids, :disconfirmation_ids, :user, :created_at
   		def user
   			{id: object.user.id, username: object.user.username}
   		end
