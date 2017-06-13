@@ -1,5 +1,5 @@
 class Products::SearchSerializer < ProductSerializer
-	attributes :id, :name, :qr_code, :details
+	attributes :id, :name, :qr_code, :details, :image
 
 	def details
 		if object.prices.exists?
@@ -7,7 +7,6 @@ class Products::SearchSerializer < ProductSerializer
 			{ max: prices.first.price,
 			 max_id: prices.first._id,
 			  min: prices.last.price,
-			   min_pic: prices.last.image,
 			    min_id: prices.last._id, 
 				min_username: prices.last.user.username, 
 				min_userid: prices.last.user._id, 

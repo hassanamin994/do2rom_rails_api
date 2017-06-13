@@ -1,5 +1,5 @@
 class Products::ShowSerializer < ProductSerializer
-	attributes :id, :name, :qr_code, :details
+	attributes :id, :name, :qr_code, :details, :image
 	class CustomPriceSerializer < PriceSerializer
 		attributes :id, :location, :sale, :sale_percentage, :sale_expiration, :price, :image, :confirmation_ids, :disconfirmation_ids, :user, :created_at
   		def user
@@ -17,7 +17,7 @@ class Products::ShowSerializer < ProductSerializer
   def details
     if object.prices.exists?
       prices = object.prices.order_by(:price => 'desc')
-      { max: prices.first.price, max_id: prices.first.id.to_s, min: prices.last.price, min_pic: prices.last.image, min_id: prices.last.id, 
+      { max: prices.first.price, max_id: prices.first.id.to_s, min: prices.last.price, min_id: prices.last.id, 
         min_username: prices.last.user.username, min_userid: prices.last.user.id.to_s, 
         min_location: prices.last.location, min_sale: prices.last.sale, 
         min_sale_percentage: prices.last.sale_percentage, min_sale_expiration: prices.last.sale_expiration, 
