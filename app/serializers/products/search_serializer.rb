@@ -1,5 +1,5 @@
 class Products::SearchSerializer < ProductSerializer
-	attributes :id, :name, :qr_code, :details, :image
+	attributes :id, :name, :qr_code, :details, :images
 
 	def details
 		if object.prices.exists?
