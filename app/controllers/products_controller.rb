@@ -23,7 +23,9 @@ class ProductsController < ApiController
     @product = Product.new(product_params)
     
     if @product.save
-      @product.images << Image.new(image_params)
+      if image_params.as_json['image']
+        @product.images << Image.new(image_params)
+      end
       render json: @product, status: :created, location: @product ,:serializer => Products::ShowSerializer
     else
       render json: @product.errors, status: :unprocessable_entity
