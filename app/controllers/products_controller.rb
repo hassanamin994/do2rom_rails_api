@@ -21,8 +21,9 @@ class ProductsController < ApiController
   # POST /products
   def create
     @product = Product.new(product_params)
-
+    
     if @product.save
+      @product.images << Image.new(image_params)
       render json: @product, status: :created, location: @product ,:serializer => Products::ShowSerializer
     else
       render json: @product.errors, status: :unprocessable_entity
@@ -31,10 +32,17 @@ class ProductsController < ApiController
 
   # PATCH/PUT /products/1
   def update
-    if @product.update(product_params)
-      render json: @product
+    if product_update_params.as_json['image']
+      @product.images << Image.new({'image': product_update_params.as_json['image']})
+    end
+    if product_update_params.as_json['qr_code']
+      if @product.update({'qr_code': product_update_params.as_json['qr_code']})
+        render json: @product ,:serializer => Products::ShowSerializer
+      else
+        render json: @product.errors, status: :unprocessable_entity
+      end
     else
-      render json: @product.errors, status: :unprocessable_entity
+      render json: @product ,:serializer => Products::ShowSerializer
     end
   end
 
@@ -88,6 +96,12 @@ class ProductsController < ApiController
 
     # Only allow a trusted parameter "white list" through.
     def product_params
-      params.require(:product).permit(:name,:qr_code, :image)
+      params.require(:product).permit(:name,:qr_code)
+    end
+    def image_params
+      params.require(:product).permit(:image)
+    end
+    def product_update_params
+      params.require(:product).permit(:image,:qr_code)
     end
 end

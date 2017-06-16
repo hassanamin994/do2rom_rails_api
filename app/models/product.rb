@@ -6,8 +6,8 @@ class Product
   field :qr_code, type: String
   has_many :prices
   has_many :comments
+  embeds_many :images, class_name: "Image"
   search_in :name
-  mount_base64_uploader :image, AvatarUploader, file_name: -> (p) { p.id }
   validates :name, uniqueness: true
   validates :qr_code, uniqueness: true ,if: :qr_code
 end

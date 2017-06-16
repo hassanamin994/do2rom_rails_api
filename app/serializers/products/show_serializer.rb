@@ -1,5 +1,5 @@
 class Products::ShowSerializer < ProductSerializer
-	attributes :id, :name, :qr_code, :details, :image
+	attributes :id, :name, :qr_code, :details, :images
 	class CustomPriceSerializer < PriceSerializer
 		attributes :id, :location, :sale, :sale_percentage, :sale_expiration, :price, :confirmation_ids, :disconfirmation_ids, :user, :created_at
   		def user
