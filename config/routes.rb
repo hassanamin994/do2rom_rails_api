@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   scope "/api" do
     post 'user_token' => 'user_token#create'
-      
+
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     resources :products do
       resources :prices, only: [:index, :create]
@@ -14,14 +14,15 @@ Rails.application.routes.draw do
     resources :comments, only: [:show, :edit, :update, :destroy]
     get '/products/search/:seraching_word', to: 'products#search'
     get '/products/searchqr/:seraching_qr', to: 'products#searchqr'
+    get '/products/pagination/:start/:end', to: 'products#pagination'
     delete '/users/Blockingusers', to: 'products#Blockedusers'
     post 'prices/:id/confirm' => 'prices#confirm'
     post 'prices/:id/disconfirm' => 'prices#disconfirm'
-    resources :users 
+    resources :users
     get '/my_info' => 'users#my_info'
     root to: 'product#index'
     match '*path', :controller => 'api', :action => 'handle_options_request', :via => [:get, :post, :options]
   end
 
-  
+
 end
