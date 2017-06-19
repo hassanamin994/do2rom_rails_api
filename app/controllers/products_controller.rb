@@ -21,7 +21,7 @@ class ProductsController < ApiController
   # POST /products
   def create
     @product = Product.new(product_params)
-    
+
     if @product.save
       if image_params.as_json['image']
         @product.images << Image.new(image_params)
@@ -79,7 +79,7 @@ class ProductsController < ApiController
   end
 
   def pagination
-    @products = Product.all
+    @products = Product.all().order_by(:id => 'desc')
     @products = @products[params[:start].to_i..params[:end].to_i]
     if @products
       render json: @products , status: :ok , :each_serializer => Products::SearchSerializer
